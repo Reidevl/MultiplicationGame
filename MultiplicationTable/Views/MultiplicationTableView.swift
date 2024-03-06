@@ -9,36 +9,67 @@ import SwiftUI
 
 struct MultiplicationTableView: View {
     @StateObject var viewModel: ViewModel = .init()
+    @State var showSettings = false
         
     var body: some View {
         ZStack {
-            LinearGradient(colors: [.blue, .gray, .red, .gray, .blue], startPoint: .top, endPoint: .bottom)
+            LinearGradient(colors: [.blue, .gray, .blue], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
             
-            VStack {
-                Text("Round: \(viewModel.roundCount)/\(viewModel.roundsNumber)")
-                    .font(.system(size: 25, weight: .bold))
-                    .foregroundStyle(.white)
+            if viewModel.isStarted {
+                PlayView(viewModel: viewModel)
                 
-                Spacer()
-                
-                Text("\(viewModel.questionTitle)")
-                    .font(.system(size: 75, weight: .bold))
-                    .foregroundStyle(.white)
-
-                ForEach (viewModel.answerOptions.indices, id: \.self) { index in
+                // Exit game
+                VStack {
+                    Spacer()
                     Button {
-                        viewModel.answerMultiplication(answer: viewModel.answerOptions[index])
+                        withAnimation {
+                            // TODO: Reset variables
+                            viewModel.isStarted.toggle()
+                        }
                     } label: {
-                        CellView(value: viewModel.answerOptions[index], isAnswerCorrect: viewModel.isAnswerCorrect)
+                        ConfigButton(imageName: "x.circle")
                     }
                 }
-                
-                Spacer()
-                Spacer()
+            } else {
+                VStack {
+                    Text("MULTIPLICATION\nGAME X")
+                        .multilineTextAlignment(.center)
+                        .font(.system(size: 35, weight: .bold))
+                        .foregroundStyle(.yellow)
+                    
+                    Spacer()
+                    Button  {
+                        withAnimation {
+                            viewModel.isStarted.toggle()
+                        }
+                    } label: {
+                        PlayButton(animationAmount: viewModel.animationCircleAmount)
+                    }
+                    
+                    Spacer()
+                    Button {
+                        withAnimation {
+                            showSettings.toggle()
+                        }
+                    } label: {
+                        if !showSettings {
+                            ConfigButton(imageName: "gearshape")
+                        } else {
+                            ConfigButton(imageName: "x.circle")
+                        }
+                    }
+                    
+                    if showSettings {
+                        SettingsView(rounds: viewModel.rounds, maxTableValue: $viewModel.maxTableValue, roundsNumber: $viewModel.roundsNumber, showSetting: $showSettings)
+                    }
+                }
+                .transition(.move(edge: .bottom))
             }
         }
-        .onAppear{ viewModel.newRound() }
+        .onAppear {
+            viewModel.animationCircleAmount = 2
+        }
     }
 }
 

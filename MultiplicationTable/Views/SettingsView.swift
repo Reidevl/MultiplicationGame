@@ -10,36 +10,37 @@ import SwiftUI
 struct SettingsView: View {
     var rounds: [Int]
     
-    @Binding var tableValue: Int
+    @Binding var maxTableValue: Int
     @Binding var roundsNumber: Int
+    @Binding var showSetting: Bool
     
     var body: some View {
-        Form {
-            Section ("SETTINGS") {
-                Picker("Multiplication table", selection: $tableValue) {
-                    ForEach(2..<13) {
-                        Text("\($0)")
-                    }
-                }
-            
-                Picker("Number of rounds", selection: $roundsNumber) {
-                    ForEach(rounds, id: \.self) {
-                        Text("\($0)")
-                    }
+        NavigationStack {
+            Form {
+                Section(header:
+                    Text("Settings")
+                        .multilineTextAlignment(.center)
+                        .font(.title2)
+                        .frame(maxWidth: .infinity)
+                ) {
+                    SelectPicker(selection: $maxTableValue, title: "Multiplication table", values: Array(2...12))
+                        .font(.title3)
+                    
+                    SelectPicker(selection: $roundsNumber, title: "Number of rounds", values: rounds)
+                        .font(.title3)
                 }
             }
-            .frame(maxWidth: .infinity)
-            .font(.title2)
         }
     }
 }
 
 #Preview {
-    let tableValue = Binding<Int>( get: {4}, set: {_ in})
+    let maxTableValue = Binding<Int>( get: {12}, set: {_ in})
     let roundsNumber = Binding<Int>( get: {5}, set: {_ in})
+    let showSettings = Binding<Bool>( get: {false}, set: {_ in})
     let rounds = [5, 10, 15]
     
     return Group {
-        SettingsView(rounds: rounds, tableValue: tableValue, roundsNumber: roundsNumber)
+        SettingsView(rounds: rounds, maxTableValue: maxTableValue, roundsNumber: roundsNumber, showSetting: showSettings)
     }
 }

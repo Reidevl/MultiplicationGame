@@ -10,17 +10,22 @@ import Foundation
 class ViewModel: ObservableObject {
     //MARK: Parameters
     // Game status flow
-    @Published var isStarted = false // Game started?
-    @Published var roundsNumber = 20 // Number of round per game
-    @Published var roundCount = 1 // Round count
-    @Published var maxTableValue = 12 // Max value from the multiplication's
-    @Published var questionTitle = "" // Title
+    @Published var isStarted: Bool = false // Game started?
+    @Published var roundsNumber: Int = 20 // Number of round per game
+    @Published var roundCount: Int = 1 // Round count
+    @Published var maxTableValue: Int = 12 // Max value from the multiplication's
+    @Published var questionTitle: String = "" // Title
     
-    @Published var correctAnswer = 0 // Correct answer value
-    @Published var userSelection = 0 // User answer for the multiplication
     @Published var answerOptions: [Int] = [] // User answer for the multiplication
-    @Published var isAnswerCorrect: Bool?
-    @Published var userScore = 0
+    @Published var userSelection: Int? // User answer for the multiplication
+    @Published var selectionMade: Bool = false // The selection was made?
+    @Published var isAnswerCorrect: Bool = false
+    @Published var correctAnswer: Int = 0 // Correct answer value
+    @Published var userScore: Int = 0
+    
+    //Animations
+    @Published var animationAmount: Int = 0
+    @Published var animationCircleAmount: Double = 1.0
     
     // Constants
     let rounds = [5, 10, 15, 20]
@@ -32,8 +37,8 @@ class ViewModel: ObservableObject {
     
     // MARK: METHODS
     func initializeNumbers() {
-        number1 = Int.random(in: 2..<maxTableValue)
-        number2 = Int.random(in: 2..<maxTableValue)
+        number1 = Int.random(in: 2..<(maxTableValue + 1))
+        number2 = Int.random(in: 2..<13)
     }
     
     // Start a new game
@@ -41,6 +46,7 @@ class ViewModel: ObservableObject {
         // Make some change to show the play view
         // ...
         newRound()
+        roundCount = 0
     }
     
     // Start a new Round
@@ -49,7 +55,11 @@ class ViewModel: ObservableObject {
         // Create title and correct answer
         correctAnswer = number1 * number2
         questionTitle = "\(number1) x \(number2)"
-        isAnswerCorrect = nil
+        
+        // Reset values
+        isAnswerCorrect = false
+        userSelection = nil
+        selectionMade = false
         
         // Generate array of answers
         answerOptions = generateArrayAnswer(correctAnswer)
@@ -57,6 +67,9 @@ class ViewModel: ObservableObject {
     
     // Validate the user answer
     func answerMultiplication(answer userAnswer: Int) {
+        selectionMade = true
+        roundCount += 1 // TODO: validate roundCount Maximum
+        
         let isCorrected = userAnswer == correctAnswer
         
         if isCorrected {
@@ -69,7 +82,14 @@ class ViewModel: ObservableObject {
             print("Your answer was \(userAnswer) but the correct is \(correctAnswer)")
         }
         
-        newRound() // Make a new round
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.newRound() // Make a new round after a brief delay
+            if self.animationAmount == 0 {
+                self.animationAmount = 360
+            } else {
+                self.animationAmount = 0
+            }
+        }
     }
     
     // Generate an array with all the options to be shown
@@ -89,6 +109,4 @@ class ViewModel: ObservableObject {
         
         return options.shuffled()
     }
-    
-
 }

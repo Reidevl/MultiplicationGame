@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE2FB6042B98F9FE00A46E17 /* PlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2FB6032B98F9FE00A46E17 /* PlayView.swift */; };
+		EE2FB6062B9902D100A46E17 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2FB6052B9902D100A46E17 /* PlayButton.swift */; };
+		EE2FB6082B99060600A46E17 /* ConfigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2FB6072B99060600A46E17 /* ConfigButton.swift */; };
+		EE2FB60A2B990BE700A46E17 /* SelectPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2FB6092B990BE700A46E17 /* SelectPicker.swift */; };
 		EE3A2B6F2B97B44C00EFB0CD /* MultiplicationTableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3A2B6E2B97B44C00EFB0CD /* MultiplicationTableApp.swift */; };
 		EE3A2B712B97B44C00EFB0CD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3A2B702B97B44C00EFB0CD /* ContentView.swift */; };
 		EE3A2B732B97B44C00EFB0CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE3A2B722B97B44C00EFB0CD /* Assets.xcassets */; };
@@ -20,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE2FB6032B98F9FE00A46E17 /* PlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayView.swift; sourceTree = "<group>"; };
+		EE2FB6052B9902D100A46E17 /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
+		EE2FB6072B99060600A46E17 /* ConfigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigButton.swift; sourceTree = "<group>"; };
+		EE2FB6092B990BE700A46E17 /* SelectPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPicker.swift; sourceTree = "<group>"; };
 		EE3A2B6B2B97B44B00EFB0CD /* MultiplicationTable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultiplicationTable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE3A2B6E2B97B44C00EFB0CD /* MultiplicationTableApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplicationTableApp.swift; sourceTree = "<group>"; };
 		EE3A2B702B97B44C00EFB0CD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -95,6 +103,9 @@
 			isa = PBXGroup;
 			children = (
 				EE3A2B882B97C14200EFB0CD /* CellView.swift */,
+				EE2FB6052B9902D100A46E17 /* PlayButton.swift */,
+				EE2FB6072B99060600A46E17 /* ConfigButton.swift */,
+				EE2FB6092B990BE700A46E17 /* SelectPicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -105,6 +116,7 @@
 				EE3A2B802B97B76E00EFB0CD /* MultiplicationTableView.swift */,
 				EE3A2B822B97B78900EFB0CD /* MultiplicationTableViewModel.swift */,
 				EE3A2B8A2B97D7A800EFB0CD /* SettingsView.swift */,
+				EE2FB6032B98F9FE00A46E17 /* PlayView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -188,12 +200,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE3A2B812B97B76E00EFB0CD /* MultiplicationTableView.swift in Sources */,
+				EE2FB6062B9902D100A46E17 /* PlayButton.swift in Sources */,
 				EE3A2B8B2B97D7A800EFB0CD /* SettingsView.swift in Sources */,
+				EE2FB60A2B990BE700A46E17 /* SelectPicker.swift in Sources */,
 				EE3A2B712B97B44C00EFB0CD /* ContentView.swift in Sources */,
 				EE3A2B852B97BA1A00EFB0CD /* GameModels.swift in Sources */,
 				EE3A2B6F2B97B44C00EFB0CD /* MultiplicationTableApp.swift in Sources */,
 				EE3A2B872B97BCBD00EFB0CD /* RoundValues.swift in Sources */,
+				EE2FB6042B98F9FE00A46E17 /* PlayView.swift in Sources */,
 				EE3A2B832B97B78900EFB0CD /* MultiplicationTableViewModel.swift in Sources */,
+				EE2FB6082B99060600A46E17 /* ConfigButton.swift in Sources */,
 				EE3A2B892B97C14200EFB0CD /* CellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
