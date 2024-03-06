@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MultiplicationTableView: View {
     @StateObject var viewModel: ViewModel = .init()
-    
+        
     var body: some View {
         ZStack {
             LinearGradient(colors: [.blue, .gray, .red, .gray, .blue], startPoint: .top, endPoint: .bottom)
@@ -22,19 +22,23 @@ struct MultiplicationTableView: View {
                 
                 Spacer()
                 
-                Text("\(viewModel.question())")
+                Text("\(viewModel.questionTitle)")
                     .font(.system(size: 75, weight: .bold))
                     .foregroundStyle(.white)
 
-                ForEach (0..<4) { _ in
-                    //TODO: Make a button to select answer
-                    CellView(value: 1, correctAnswer: true)
+                ForEach (viewModel.answerOptions.indices, id: \.self) { index in
+                    Button {
+                        viewModel.answerMultiplication(answer: viewModel.answerOptions[index])
+                    } label: {
+                        CellView(value: viewModel.answerOptions[index], isAnswerCorrect: viewModel.isAnswerCorrect)
+                    }
                 }
                 
                 Spacer()
                 Spacer()
             }
-        }  
+        }
+        .onAppear{ viewModel.newRound() }
     }
 }
 

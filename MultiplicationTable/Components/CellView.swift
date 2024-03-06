@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CellView: View {
     var value: Int
-    var correctAnswer: Bool
+    var isAnswerCorrect: Bool?
     
     var body: some View {
         Text("\(value)")
@@ -18,7 +18,7 @@ struct CellView: View {
             .foregroundStyle(.white)
             .padding(30)
             .frame(width: 300, height: 100)
-            .background(correctAnswer ? .green : .red)
+            .background(isAnswerCorrect == true ? .green : isAnswerCorrect == false  ? .red : .yellow)
             .clipShape(.capsule)
             .shadow(radius: 5)
     }
@@ -26,9 +26,9 @@ struct CellView: View {
 
 #Preview {
     let value: Int = 63
-    let correctAnswer: Bool = true
+    let isAnswerCorrect: Bool? = nil
     
     return Group {
-        CellView(value: value, correctAnswer: correctAnswer)
+        CellView(value: value, isAnswerCorrect: isAnswerCorrect)
     }
 }
