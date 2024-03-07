@@ -25,7 +25,7 @@ struct GameOverView: View {
                     viewModel.newGame()
                 }
             } label: {
-                PlayButton(title: "RESET", animationAmount: viewModel.animationCircleAmount)
+                PlayButton(title: "RESET", animationCircleAmount: viewModel.animationCircleAmount)
             }
             
             Spacer()

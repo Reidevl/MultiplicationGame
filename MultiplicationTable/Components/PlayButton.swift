@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PlayButton: View {
     var title: String
-    var animationAmount: Double
+    var animationCircleAmount: Double
     
     var body: some View {
         TextView(text: title, fontSize: .title, fontColor: .blue)
@@ -22,12 +22,12 @@ struct PlayButton: View {
             .overlay(
                 RoundedRectangle(cornerRadius: 50)
                     .stroke(.yellow)
-                    .scaleEffect(animationAmount)
-                    .opacity(2 - animationAmount)
+                    .scaleEffect(animationCircleAmount)
+                    .opacity(2 - animationCircleAmount)
                     .animation(
                         .easeOut(duration: 1)
                         .repeatForever(autoreverses: false),
-                        value: animationAmount
+                        value: animationCircleAmount
                     )
             )
     }
@@ -35,9 +35,9 @@ struct PlayButton: View {
 
 #Preview {
     let title: String = "Test"
-    let animationAmount: Double = 2.0
+    let animationCircleAmount: Double = 2.0
     
     return Group {
-        PlayButton(title: title, animationAmount: animationAmount)
+        PlayButton(title: title, animationCircleAmount: animationCircleAmount)
     }
 }

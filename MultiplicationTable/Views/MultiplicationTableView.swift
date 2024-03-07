@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MultiplicationTableView: View {
     @StateObject var viewModel: ViewModel = .init()
-    @State var showSettings = false
         
     var body: some View {
         ZStack {
@@ -20,18 +19,13 @@ struct MultiplicationTableView: View {
                 if viewModel.isStarted {
                     PlayView(viewModel: viewModel)
                 } else {
-                    StartView(viewModel: viewModel, showSettings: $showSettings)
-                    .transition(.move(edge: .bottom))
+                    StartView(viewModel: viewModel)
                 }
             } else {
                 VStack {
                     GameOverView(viewModel: viewModel)
                 }
-                .transition(.move(edge: .top))
             }
-        }
-        .onAppear {
-            viewModel.animationCircleAmount = 2
         }
     }
 }

@@ -13,6 +13,7 @@ class ViewModel: ObservableObject {
     // Game status flow
     @Published var isStarted: Bool = false // Game started?
     @Published var isFinished: Bool = false // Game finished?
+    @Published var showSettings: Bool = false // Game finished?
     @Published var roundsNumber: Int = 5 // Number of round per game
     @Published var roundCount: Int = 1 // Round count
     @Published var maxTableValue: Int = 6 // Max value from the multiplication's
@@ -52,6 +53,13 @@ class ViewModel: ObservableObject {
         newRound()
     }
     
+    func goStartView() {
+        isStarted = false
+        showSettings = false
+        
+        animationCircleAmount = 1.0 // Reset animationCircle value
+    }
+    
     // Start a new Round
     func newRound() {
         initializeNumbers()
@@ -81,10 +89,8 @@ class ViewModel: ObservableObject {
         } else {
             isAnswerCorrect = false
         }
-    
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.newRoundIfNeeded()
-        }
+
+        newRoundIfNeeded()
     }
     
     // Generate an array with all the options to be shown
@@ -112,11 +118,13 @@ class ViewModel: ObservableObject {
         if roundCount == roundsNumber {
             isFinished = true
         } else {
-            newRound() // Make a new round after a brief delay
-            if self.animationAmount == 0 {
-                self.animationAmount = 360
-            } else {
-                self.animationAmount = 0
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.newRound() // Make a new round after a brief delay
+                if self.animationAmount == 0 {
+                    self.animationAmount = 360
+                } else {
+                    self.animationAmount = 0
+                }
             }
         }
     }

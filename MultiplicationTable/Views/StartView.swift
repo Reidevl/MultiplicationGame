@@ -9,7 +9,6 @@ import SwiftUI
 
 struct StartView: View {
     @ObservedObject var viewModel: ViewModel
-    @Binding var showSettings: Bool
 
     var body: some View {
         VStack {
@@ -18,37 +17,40 @@ struct StartView: View {
             Spacer()
             Button {
                 withAnimation {
-                    viewModel.isStarted.toggle()
+                    viewModel.isStarted = true
+                    viewModel.newGame()
                 }
             } label: {
-                PlayButton(title: "START", animationAmount: viewModel.animationCircleAmount)
+                PlayButton(title: "START", animationCircleAmount: viewModel.animationCircleAmount)
             }
             
             Spacer()
             Button {
                 withAnimation {
-                    showSettings.toggle()
+                    viewModel.showSettings.toggle()
                 }
             } label: {
-                if !showSettings {
+                if !viewModel.showSettings {
                     FooterButton(imageName: "gearshape")
                 } else {
                     FooterButton(imageName: "x.circle")
                 }
             }
             
-            if showSettings {
-                SettingsView(rounds: viewModel.rounds, maxTableValue: $viewModel.maxTableValue, roundsNumber: $viewModel.roundsNumber, showSetting: $showSettings)
+            if viewModel.showSettings {
+                SettingsView(rounds: viewModel.rounds, maxTableValue: $viewModel.maxTableValue, roundsNumber: $viewModel.roundsNumber, showSetting: $viewModel.showSettings)
             }
+        }
+        .onAppear {
+            viewModel.animationCircleAmount = 2
         }
     }
 }
 
 #Preview {
     @StateObject var viewModel: ViewModel = .init()
-    let showSettings =  Binding<Bool>(get: { false }, set: { _ in})
 
     return Group {
-        StartView(viewModel: viewModel, showSettings: showSettings)
+        StartView(viewModel: viewModel)
     }
 }

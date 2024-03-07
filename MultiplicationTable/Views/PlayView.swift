@@ -35,22 +35,18 @@ struct PlayView: View {
             
             Spacer()
             Spacer()
+            Spacer()
             
             // Exit game
-            VStack {
-                Spacer()
-                Button {
-                    withAnimation {
-                        viewModel.isStarted.toggle()
-                    }
-                } label: {
-                    FooterButton(imageName: "x.circle")
+            Button {
+                withAnimation(.bouncy(duration: 1)) {
+                    viewModel.goStartView()
                 }
+            } label: {
+                FooterButton(imageName: "x.circle")
             }
         }
         .onAppear{
-            print(viewModel.roundsNumber)
-            viewModel.animationCircleAmount = 2
             viewModel.newRound()
         }
     }
