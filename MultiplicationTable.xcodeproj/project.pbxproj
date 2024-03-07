@@ -32,7 +32,6 @@
 		EE2FB60B2B99FA8400A46E17 /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
 		EE2FB60D2B99FB9300A46E17 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		EE2FB60F2B9A10F300A46E17 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
-		EE2FB6122B9A315000A46E17 /* Simulator Screen Recording - iPhone 15 Pro - 2024-03-07 at 13.10.16.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Simulator Screen Recording - iPhone 15 Pro - 2024-03-07 at 13.10.16.mp4"; sourceTree = "<group>"; };
 		EE2FB6132B9A316600A46E17 /* Simulator Screenshot - iPhone 15 Pro - 2024-03-07 at 13.10.50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screenshot - iPhone 15 Pro - 2024-03-07 at 13.10.50.png"; sourceTree = "<group>"; };
 		EE2FB6142B9A316600A46E17 /* Simulator Screenshot - iPhone 15 Pro - 2024-03-07 at 13.10.30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screenshot - iPhone 15 Pro - 2024-03-07 at 13.10.30.png"; sourceTree = "<group>"; };
 		EE2FB6152B9A316600A46E17 /* Simulator Screenshot - iPhone 15 Pro - 2024-03-07 at 13.10.23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screenshot - iPhone 15 Pro - 2024-03-07 at 13.10.23.png"; sourceTree = "<group>"; };
@@ -63,7 +62,6 @@
 		EE2FB6112B9A313C00A46E17 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				EE2FB6122B9A315000A46E17 /* Simulator Screen Recording - iPhone 15 Pro - 2024-03-07 at 13.10.16.mp4 */,
 				EE2FB6152B9A316600A46E17 /* Simulator Screenshot - iPhone 15 Pro - 2024-03-07 at 13.10.23.png */,
 				EE2FB6142B9A316600A46E17 /* Simulator Screenshot - iPhone 15 Pro - 2024-03-07 at 13.10.30.png */,
 				EE2FB6132B9A316600A46E17 /* Simulator Screenshot - iPhone 15 Pro - 2024-03-07 at 13.10.50.png */,
