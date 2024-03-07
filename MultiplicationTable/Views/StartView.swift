@@ -8,25 +8,20 @@
 import SwiftUI
 
 struct StartView: View {
-    @Binding var isStarted: Bool
+    @ObservedObject var viewModel: ViewModel
     @Binding var showSettings: Bool
-    @Binding var maxTableValue: Int
-    @Binding var roundsNumber: Int
-    
-    var rounds: [Int]
-    var animationCircleAmount: Double
-    
+
     var body: some View {
         VStack {
             TextView(text: "MULTIPLICATION\nGAME X", fontSize: .system(size: 35, weight: .bold), fontColor: .yellow)
             
             Spacer()
-            Button  {
+            Button {
                 withAnimation {
-                    isStarted.toggle()
+                    viewModel.isStarted.toggle()
                 }
             } label: {
-                PlayButton(title: "START", animationAmount: animationCircleAmount)
+                PlayButton(title: "START", animationAmount: viewModel.animationCircleAmount)
             }
             
             Spacer()
@@ -43,22 +38,17 @@ struct StartView: View {
             }
             
             if showSettings {
-                SettingsView(rounds: rounds, maxTableValue: $maxTableValue, roundsNumber: $roundsNumber, showSetting: $showSettings)
+                SettingsView(rounds: viewModel.rounds, maxTableValue: $viewModel.maxTableValue, roundsNumber: $viewModel.roundsNumber, showSetting: $showSettings)
             }
         }
     }
 }
 
 #Preview {
-    let isStarted =  Binding<Bool>(get: { false }, set: { _ in})
+    @StateObject var viewModel: ViewModel = .init()
     let showSettings =  Binding<Bool>(get: { false }, set: { _ in})
-    let maxTableValue =  Binding<Int>(get: { 5 }, set: { _ in})
-    let roundsNumber =  Binding<Int>(get: { 10 }, set: { _ in})
 
-    var rounds: [Int] = [5, 10, 15]
-    var animationCircleAmount: Double = 2.0
-    
     return Group {
-        StartView(isStarted: isStarted, showSettings: showSettings, maxTableValue: maxTableValue, roundsNumber: roundsNumber, rounds: rounds, animationCircleAmount: animationCircleAmount)
+        StartView(viewModel: viewModel, showSettings: showSettings)
     }
 }

@@ -35,6 +35,18 @@ struct PlayView: View {
             
             Spacer()
             Spacer()
+            
+            // Exit game
+            VStack {
+                Spacer()
+                Button {
+                    withAnimation {
+                        viewModel.isStarted.toggle()
+                    }
+                } label: {
+                    FooterButton(imageName: "x.circle")
+                }
+            }
         }
         .onAppear{
             print(viewModel.roundsNumber)

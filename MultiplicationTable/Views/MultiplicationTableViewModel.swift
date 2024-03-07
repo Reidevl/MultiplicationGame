@@ -9,6 +9,7 @@ import Foundation
 
 class ViewModel: ObservableObject {
     //MARK: Parameters
+    
     // Game status flow
     @Published var isStarted: Bool = false // Game started?
     @Published var isFinished: Bool = false // Game finished?
@@ -104,7 +105,7 @@ class ViewModel: ObservableObject {
         return options.shuffled()
     }
     
-    //MARK: Private methods
+    //MARK: PRIVATE METHODS
     
     // Validate if the game has finished
     private func newRoundIfNeeded() {

@@ -19,26 +19,13 @@ struct MultiplicationTableView: View {
             if !viewModel.isFinished {
                 if viewModel.isStarted {
                     PlayView(viewModel: viewModel)
-                    
-                    // Exit game
-                    VStack {
-                        Spacer()
-                        Button {
-                            withAnimation {
-                                viewModel.isStarted.toggle()
-                            }
-                        } label: {
-                            FooterButton(imageName: "x.circle")
-                        }
-                    }
                 } else {
-                    StartView(isStarted: $viewModel.isStarted, showSettings: $showSettings, maxTableValue: $viewModel.maxTableValue, roundsNumber: $viewModel.roundsNumber, rounds: viewModel.rounds, animationCircleAmount: viewModel.animationCircleAmount)
+                    StartView(viewModel: viewModel, showSettings: $showSettings)
                     .transition(.move(edge: .bottom))
                 }
             } else {
                 VStack {
-                    GameOverView(userScore: viewModel.userScore, roundNumber: viewModel.roundsNumber, startNewGame: viewModel.newGame, animationCircleAmount: $viewModel.animationCircleAmount
-                    )
+                    GameOverView(viewModel: viewModel)
                 }
                 .transition(.move(edge: .top))
             }
