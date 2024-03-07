@@ -20,8 +20,6 @@
 		EE3A2B762B97B44C00EFB0CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE3A2B752B97B44C00EFB0CD /* Preview Assets.xcassets */; };
 		EE3A2B812B97B76E00EFB0CD /* MultiplicationTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3A2B802B97B76E00EFB0CD /* MultiplicationTableView.swift */; };
 		EE3A2B832B97B78900EFB0CD /* MultiplicationTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3A2B822B97B78900EFB0CD /* MultiplicationTableViewModel.swift */; };
-		EE3A2B852B97BA1A00EFB0CD /* GameModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3A2B842B97BA1A00EFB0CD /* GameModels.swift */; };
-		EE3A2B872B97BCBD00EFB0CD /* RoundValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3A2B862B97BCBD00EFB0CD /* RoundValues.swift */; };
 		EE3A2B892B97C14200EFB0CD /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3A2B882B97C14200EFB0CD /* CellView.swift */; };
 		EE3A2B8B2B97D7A800EFB0CD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3A2B8A2B97D7A800EFB0CD /* SettingsView.swift */; };
 /* End PBXBuildFile section */
@@ -41,8 +39,6 @@
 		EE3A2B752B97B44C00EFB0CD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EE3A2B802B97B76E00EFB0CD /* MultiplicationTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplicationTableView.swift; sourceTree = "<group>"; };
 		EE3A2B822B97B78900EFB0CD /* MultiplicationTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplicationTableViewModel.swift; sourceTree = "<group>"; };
-		EE3A2B842B97BA1A00EFB0CD /* GameModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModels.swift; sourceTree = "<group>"; };
-		EE3A2B862B97BCBD00EFB0CD /* RoundValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundValues.swift; sourceTree = "<group>"; };
 		EE3A2B882B97C14200EFB0CD /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		EE3A2B8A2B97D7A800EFB0CD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,10 +73,8 @@
 		EE3A2B6D2B97B44B00EFB0CD /* MultiplicationTable */ = {
 			isa = PBXGroup;
 			children = (
-				EE3A2B7F2B97B48B00EFB0CD /* Helper */,
 				EE3A2B7E2B97B47A00EFB0CD /* Views */,
 				EE3A2B7D2B97B47100EFB0CD /* Components */,
-				EE3A2B7C2B97B46400EFB0CD /* Models */,
 				EE3A2B6E2B97B44C00EFB0CD /* MultiplicationTableApp.swift */,
 				EE3A2B702B97B44C00EFB0CD /* ContentView.swift */,
 				EE3A2B722B97B44C00EFB0CD /* Assets.xcassets */,
@@ -95,14 +89,6 @@
 				EE3A2B752B97B44C00EFB0CD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		EE3A2B7C2B97B46400EFB0CD /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				EE3A2B842B97BA1A00EFB0CD /* GameModels.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		EE3A2B7D2B97B47100EFB0CD /* Components */ = {
@@ -128,14 +114,6 @@
 				EE2FB60F2B9A10F300A46E17 /* StartView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		EE3A2B7F2B97B48B00EFB0CD /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				EE3A2B862B97BCBD00EFB0CD /* RoundValues.swift */,
-			);
-			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,9 +193,7 @@
 				EE2FB60A2B990BE700A46E17 /* SelectPicker.swift in Sources */,
 				EE3A2B712B97B44C00EFB0CD /* ContentView.swift in Sources */,
 				EE2FB6102B9A10F300A46E17 /* StartView.swift in Sources */,
-				EE3A2B852B97BA1A00EFB0CD /* GameModels.swift in Sources */,
 				EE3A2B6F2B97B44C00EFB0CD /* MultiplicationTableApp.swift in Sources */,
-				EE3A2B872B97BCBD00EFB0CD /* RoundValues.swift in Sources */,
 				EE2FB6042B98F9FE00A46E17 /* PlayView.swift in Sources */,
 				EE3A2B832B97B78900EFB0CD /* MultiplicationTableViewModel.swift in Sources */,
 				EE2FB6082B99060600A46E17 /* FooterButton.swift in Sources */,
