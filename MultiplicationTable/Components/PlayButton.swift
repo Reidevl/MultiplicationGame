@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct PlayButton: View {
+    var title: String
     var animationAmount: Double
+    
     var body: some View {
-        Text("START")
-            .font(.title)
+        TextView(text: title, fontSize: .title, fontColor: .blue)
             .bold()
-            .foregroundStyle(.white)
             .padding(30)
             .frame(width: 300, height: 100)
             .background(.yellow)
             .clipShape(.capsule)
-            .shadow(color: .blue ,radius: 5)
+            .shadow(color: .blue, radius: 5)
             .overlay(
                 RoundedRectangle(cornerRadius: 50)
                     .stroke(.yellow)
@@ -34,8 +34,10 @@ struct PlayButton: View {
 }
 
 #Preview {
-    let animationAmount = 2.0
+    let title: String = "Test"
+    let animationAmount: Double = 2.0
+    
     return Group {
-        PlayButton(animationAmount: animationAmount)
+        PlayButton(title: title, animationAmount: animationAmount)
     }
 }

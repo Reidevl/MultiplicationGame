@@ -39,15 +39,12 @@ struct CellView: View {
             .overlay(
                 content: {
                     if value == correctAnswer {
-                        Text("+ 1 score")
-                            .font(.system(size: 50))
-                            .fontWeight(.bold)
-                            .foregroundColor(.yellow)
+                        TextView(text: "+ 1 score", fontSize: .system(size: 50, weight: .bold), fontColor: .yellow)
                             .shadow(color: .gray, radius: 6, x: 0, y: 1)
                             .scaleEffect(isAnswerCorrect ? CGSize(width: 1, height: 1) : CGSize(width: 0, height: 0))
-                            .animation(.easeIn(duration: 1), value: isAnswerCorrect)
+                            .animation(.easeIn(duration: 0.5), value: isAnswerCorrect)
                             .opacity( isAnswerCorrect ? 1 : 0)
-                            .animation(.easeOut(duration: 1), value: isAnswerCorrect)
+                            .animation(.easeOut(duration: 0.5), value: isAnswerCorrect)
                     }
                 }
             )

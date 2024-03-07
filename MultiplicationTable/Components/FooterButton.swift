@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ConfigButton: View {
+struct FooterButton: View {
     var imageName: String
     
     var body: some View {
@@ -19,6 +19,6 @@ struct ConfigButton: View {
 #Preview {
     let imageName = "gear"
     return Group {
-        ConfigButton(imageName: imageName)        
+        FooterButton(imageName: imageName)        
     }
 }

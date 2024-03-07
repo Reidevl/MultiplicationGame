@@ -18,9 +18,7 @@ struct SettingsView: View {
         NavigationStack {
             Form {
                 Section(header:
-                    Text("Settings")
-                        .multilineTextAlignment(.center)
-                        .font(.title2)
+                        TextView(text: "Settings", fontSize: .system(.title2), fontColor: .black)
                         .frame(maxWidth: .infinity)
                 ) {
                     SelectPicker(selection: $maxTableValue, title: "Multiplication table", values: Array(2...12))

@@ -12,15 +12,11 @@ struct PlayView: View {
     
     var body: some View {
         VStack {
-            Text("Round: \(viewModel.roundCount)/\(viewModel.roundsNumber)")
-                .font(.system(size: 25, weight: .bold))
-                .foregroundStyle(.white)
+            TextView(text: "Round: \(viewModel.roundCount)/\(viewModel.roundsNumber)", fontSize: .system(size: 25, weight: .bold), fontColor: .white)
             
             Spacer()
             
-            Text("\(viewModel.questionTitle)")
-                .font(.system(size: 75, weight: .bold))
-                .foregroundStyle(.white)
+            TextView(text: viewModel.questionTitle, fontSize: .system(size: 75, weight: .bold), fontColor: .white)
 
             ForEach (viewModel.answerOptions.indices, id: \.self) { index in
                 Button {

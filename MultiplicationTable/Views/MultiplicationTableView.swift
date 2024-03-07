@@ -16,55 +16,31 @@ struct MultiplicationTableView: View {
             LinearGradient(colors: [.blue, .gray, .blue], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
             
-            if viewModel.isStarted {
-                PlayView(viewModel: viewModel)
-                
-                // Exit game
-                VStack {
-                    Spacer()
-                    Button {
-                        withAnimation {
-                            // TODO: Reset variables
-                            viewModel.isStarted.toggle()
+            if !viewModel.isFinished {
+                if viewModel.isStarted {
+                    PlayView(viewModel: viewModel)
+                    
+                    // Exit game
+                    VStack {
+                        Spacer()
+                        Button {
+                            withAnimation {
+                                viewModel.isStarted.toggle()
+                            }
+                        } label: {
+                            FooterButton(imageName: "x.circle")
                         }
-                    } label: {
-                        ConfigButton(imageName: "x.circle")
                     }
+                } else {
+                    StartView(isStarted: $viewModel.isStarted, showSettings: $showSettings, maxTableValue: $viewModel.maxTableValue, roundsNumber: $viewModel.roundsNumber, rounds: viewModel.rounds, animationCircleAmount: viewModel.animationCircleAmount)
+                    .transition(.move(edge: .bottom))
                 }
             } else {
                 VStack {
-                    Text("MULTIPLICATION\nGAME X")
-                        .multilineTextAlignment(.center)
-                        .font(.system(size: 35, weight: .bold))
-                        .foregroundStyle(.yellow)
-                    
-                    Spacer()
-                    Button  {
-                        withAnimation {
-                            viewModel.isStarted.toggle()
-                        }
-                    } label: {
-                        PlayButton(animationAmount: viewModel.animationCircleAmount)
-                    }
-                    
-                    Spacer()
-                    Button {
-                        withAnimation {
-                            showSettings.toggle()
-                        }
-                    } label: {
-                        if !showSettings {
-                            ConfigButton(imageName: "gearshape")
-                        } else {
-                            ConfigButton(imageName: "x.circle")
-                        }
-                    }
-                    
-                    if showSettings {
-                        SettingsView(rounds: viewModel.rounds, maxTableValue: $viewModel.maxTableValue, roundsNumber: $viewModel.roundsNumber, showSetting: $showSettings)
-                    }
+                    GameOverView(userScore: viewModel.userScore, roundNumber: viewModel.roundsNumber, startNewGame: viewModel.newGame, animationCircleAmount: $viewModel.animationCircleAmount
+                    )
                 }
-                .transition(.move(edge: .bottom))
+                .transition(.move(edge: .top))
             }
         }
         .onAppear {

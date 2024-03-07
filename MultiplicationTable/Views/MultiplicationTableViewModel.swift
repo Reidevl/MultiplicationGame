@@ -11,9 +11,10 @@ class ViewModel: ObservableObject {
     //MARK: Parameters
     // Game status flow
     @Published var isStarted: Bool = false // Game started?
-    @Published var roundsNumber: Int = 20 // Number of round per game
+    @Published var isFinished: Bool = false // Game finished?
+    @Published var roundsNumber: Int = 5 // Number of round per game
     @Published var roundCount: Int = 1 // Round count
-    @Published var maxTableValue: Int = 12 // Max value from the multiplication's
+    @Published var maxTableValue: Int = 6 // Max value from the multiplication's
     @Published var questionTitle: String = "" // Title
     
     @Published var answerOptions: [Int] = [] // User answer for the multiplication
@@ -43,10 +44,11 @@ class ViewModel: ObservableObject {
     
     // Start a new game
     func newGame() {
-        // Make some change to show the play view
-        // ...
-        newRound()
+        isFinished = false
         roundCount = 0
+        userScore = 0
+        
+        newRound()
     }
     
     // Start a new Round
@@ -68,27 +70,19 @@ class ViewModel: ObservableObject {
     // Validate the user answer
     func answerMultiplication(answer userAnswer: Int) {
         selectionMade = true
-        roundCount += 1 // TODO: validate roundCount Maximum
+        roundCount += 1
         
         let isCorrected = userAnswer == correctAnswer
         
         if isCorrected {
             isAnswerCorrect = true
-            print("Great it was corrected: \(correctAnswer)")
             userScore += 1
-        
         } else {
             isAnswerCorrect = false
-            print("Your answer was \(userAnswer) but the correct is \(correctAnswer)")
         }
-        
+    
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.newRound() // Make a new round after a brief delay
-            if self.animationAmount == 0 {
-                self.animationAmount = 360
-            } else {
-                self.animationAmount = 0
-            }
+            self.newRoundIfNeeded()
         }
     }
     
@@ -108,5 +102,21 @@ class ViewModel: ObservableObject {
         }
         
         return options.shuffled()
+    }
+    
+    //MARK: Private methods
+    
+    // Validate if the game has finished
+    private func newRoundIfNeeded() {
+        if roundCount == roundsNumber {
+            isFinished = true
+        } else {
+            newRound() // Make a new round after a brief delay
+            if self.animationAmount == 0 {
+                self.animationAmount = 360
+            } else {
+                self.animationAmount = 0
+            }
+        }
     }
 }
